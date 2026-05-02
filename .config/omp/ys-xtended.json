@@ -1,0 +1,100 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "lightBlue",
+          "style": "plain",
+          "template": "#",
+          "type": "text"
+        },
+        {
+          "foreground": "darkGray",
+          "style": "plain",
+          "template": "{{ if .Root }} % {{ end }}",
+          "type": "root"
+        },
+          {
+            "style": "plain",
+            "template": "<cyan>{{ if .SSHSession }}<lightRed>⎇ </>{{ end }}{{ .UserName }}</><darkGray>@</><green>{{ .HostName }}</>",
+            "type": "session"
+          },
+          {
+            "foreground": "lightMagenta",
+            "style": "plain",
+            "template": " <white>on</> <magenta>{{ if .WSL }}{{ .Icon }}{{ else }}{{ .Icon }}{{ end }}</>",
+            "type": "os",
+            "properties": {
+              "display_distro_name": true
+            }
+          },
+          {
+            "foreground": "lightCyan",
+            "style": "plain",
+            "template": "<darkGray> [</><cyan>{{ .Name }}</><darkGray>]</>",
+            "type": "shell"
+          },
+          {
+            "foreground": "lightYellow",
+            "style": "plain",
+            "template": "<darkGray> in </><cyan>{{ .Path }}</>",
+            "type": "path",
+            "properties": {
+              "style": "folder"
+            }
+          },
+          {
+            "foreground": "lightGreen",
+            "style": "plain",
+            "template": "<darkGray> </><green>git:</><cyan>{{ .HEAD }}</>{{ if .Working.Changed }}<red> ✗</>{{ end }}",
+            "type": "git",
+            "properties": {
+              "fetch_status": true
+            }
+          }
+        ],
+        "type": "prompt"
+      },
+      {
+        "alignment": "right",
+        "segments": [
+          {
+            "foreground": "darkGray",
+            "style": "plain",
+            "template": "{{ if .Env.SSH_CLIENT }}{{ .Env.SSH_CLIENT }}{{ end }}",
+            "type": "text"
+          },
+          {
+            "foreground": "darkGray",
+            "style": "plain",
+            "template": "[{{ .CurrentDate | date .Format }}]",
+            "type": "time"
+          },
+          {
+            "foreground": "red",
+            "style": "plain",
+            "template": "{{ if gt .Code 0 }}<red>✗{{ .Code }}</>{{ end }}",
+            "type": "status"
+          }
+        ],
+        "type": "prompt"
+      },
+      {
+        "alignment": "left",
+        "newline": true,
+        "segments": [
+          {
+            "foreground": "lightRed",
+            "style": "plain",
+            "template": "$",
+            "type": "text"
+          }
+        ],
+        "type": "prompt"
+      }
+    ],
+    "final_space": true,
+    "version": 2
+  }
